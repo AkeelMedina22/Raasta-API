@@ -75,7 +75,6 @@ def get_potholes(TypePoints):
         return({"Points" : "Invalid type of points requested"})
         
   
-LOAD_TREE = 1
 @app.route('/get_nearest_neighbor/<path:input>', methods=['GET'])
 def nearest_neighbor(input):
   """
