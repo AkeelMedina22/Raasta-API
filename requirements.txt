@@ -1,4 +1,4 @@
-Flask==2.2.2
+Flask
 flask_restful
 firebase
 uuid
@@ -8,4 +8,3 @@ jsonify
 requests
 jsonpickle
 numpy
-gunicorn
