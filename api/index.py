@@ -1,4 +1,4 @@
-import flask
+from flask import Flask, request
 from flask_restful import Api, Resource
 from firebase import firebase
 from flask_cors import CORS, cross_origin
