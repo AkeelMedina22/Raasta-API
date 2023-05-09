@@ -1,12 +1,8 @@
-from flask import Flask, request
+import Flask
 from flask_restful import Api, Resource
 from firebase import firebase
-import uuid
 from flask_cors import CORS, cross_origin
 from flasgger import Swagger
-import jsonify
-import requests
-import jsonpickle
 import numpy as np
 import pickle
 import re
