@@ -1,1 +1,11 @@
 Flask==2.2.2
+flask_restful
+firebase
+uuid
+flask_cors
+flasgger
+jsonify
+requests
+jsonpickle
+numpy
+gunicorn
