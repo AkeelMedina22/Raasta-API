@@ -159,12 +159,12 @@ def nearest_neighbor(input):
     print(points)
     p_dist, p_loc, s_dist, s_loc = [],[],[],[]
 
-    with open('KD_Tree/pothole_tree.p', 'rb') as f:
+    with open('pothole_tree.p', 'rb') as f:
       tree = pickle.load(f)
       p_dist, p_index = tree.query(points)
       p_loc = tree.data[p_index]
 
-    with open('KD_Tree/speedbreaker_tree.p', 'rb') as f:
+    with open('speedbreaker_tree.p', 'rb') as f:
       tree = pickle.load(f)
       s_dist, s_index = tree.query(points)
       s_loc = tree.data[s_index]
