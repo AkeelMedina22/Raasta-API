@@ -1,7 +1,6 @@
 flask
 flask_restful
 firebase
-uuid
 flask_cors
 flasgger
 jsonify
