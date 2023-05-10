@@ -4,4 +4,4 @@ firebase
 flask_cors
 flasgger
 numpy
-scipy
+pykdtree
