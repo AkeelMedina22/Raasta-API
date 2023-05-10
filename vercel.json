@@ -1,8 +1,9 @@
 {
   "builds": [
-        {"src": "/(*.p)", "use": "@vercel/static"}
+        {"src": "api/_pothole_tree.p", "use": "@vercel/static"},
+        {"src": "api/_speedbreaker_tree.p", "use": "@vercel/static"}
     ],
   "rewrites": [
-    { "source": "/(.*)", "destination": "/index" }
+    { "source": "api/index.py", "destination": "api/index.py" }
   ]
 }
