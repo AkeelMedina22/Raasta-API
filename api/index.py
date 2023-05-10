@@ -136,21 +136,15 @@ def nearest_neighbor(input):
         # latitude
         if x % 2 == 0:
            if re.match(latitude_pattern, txt[x]):
-              if len(txt) == 2:
-                 points.append(float(txt[x]))
-              else:
                 p.append(float(txt[x]))
            else:
               break
         elif x % 2 == 1:
            if re.match(longitude_pattern, txt[x]):
-              if len(txt) == 2:
-                 points.append(float(txt[x]))
-              else:
                 points.append([p.pop(), float(txt[x])])
            else:
               break
-              
+  print(points)
   potholes = []
   speedbreakers = []
   result = firebase.get('/pothole-locations', None)
@@ -168,7 +162,7 @@ def nearest_neighbor(input):
       speedbreakers.append(latlong)
 
            
-  if len(points) % 2 == 0 and len(points) >= 2:
+  if len(points) >= 1:
     print(points)
     p_dist, p_loc, s_dist, s_loc = [],[],[],[]
 
