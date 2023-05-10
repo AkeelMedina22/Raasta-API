@@ -5,6 +5,7 @@ from flask_cors import CORS, cross_origin
 from flasgger import Swagger
 import numpy as np
 import pickle
+from pykdtree.kdtree import KDTree
 import re
 
 app = Flask(__name__)
@@ -154,20 +155,17 @@ def nearest_neighbor(input):
     print(points)
     p_dist, p_loc, s_dist, s_loc = [],[],[],[]
 
-    with open('pothole_tree.p', 'rb') as f:
-      tree = pickle.load(f)
-      p_dist, p_index = tree.query(points)
-      p_loc = tree.data[p_index]
+    p_tree = KDTree(np.array(potholes))
+    p_dist, p_index = p_tree.query(np.array(points))
+    p_loc = p_tree.data[p_index]
+    s_tree = KDTree(np.array(speedbreakers))
+    s_dist, s_index = s_tree.query(np.array(points))
+    s_loc = s_tree.data[s_index]
 
-    with open('speedbreaker_tree.p', 'rb') as f:
-      tree = pickle.load(f)
-      s_dist, s_index = tree.query(points)
-      s_loc = tree.data[s_index]
-
-      if type(s_dist) == float:
-        return {'p_dist' : p_dist, 'p_loc': p_loc.tolist(), 's_dist' : s_dist, 's_loc': s_loc.tolist()}
-      else:
-        return {'p_dist' : p_dist.tolist(), 'p_loc': p_loc.tolist(), 's_dist' : s_dist.tolist(), 's_loc': s_loc.tolist()}
+    if type(s_dist) == float:
+      return {'p_dist' : p_dist, 'p_loc': p_loc.tolist(), 's_dist' : s_dist, 's_loc': s_loc.tolist()}
+    else:
+      return {'p_dist' : p_dist.tolist(), 'p_loc': p_loc.tolist(), 's_dist' : s_dist.tolist(), 's_loc': s_loc.tolist()}
   else:
      return "Error. Please check your input."
   
