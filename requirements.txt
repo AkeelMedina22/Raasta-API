@@ -1,11 +1,10 @@
 flask==2.2.3 
-scipy.spatial
+scipy
 flask_restful
 firebase
 flask_cors
 flasgger
 jsonify
 requests
-jsonpickle
 numpy
-gunicorn
+jsonpickle
