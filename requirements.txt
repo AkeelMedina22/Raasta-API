@@ -1,4 +1,5 @@
 flask==2.2.3 
+scipy
 flask_restful
 firebase
 flask_cors
