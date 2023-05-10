@@ -252,20 +252,23 @@ def intersection(input):
       return np.linalg.norm(a-c) + np.linalg.norm(b-c) - np.linalg.norm(a-b) <= EPSILON
 
     def data_on_route(points, potholes, speedbreakers):
-      on_route = []
+      p_on_route = []
+      s_on_route = []
       for i in range(len(points)-1):
-          for j in range(len(potholes)):
+         for j in range(len(potholes)):
             if is_between(np.array(points[i]), np.array(points[i+1]), np.array(potholes[j])):
-                on_route.append(potholes[j])
-          for j in range(len(speedbreakers)):
+               p_on_route.append(potholes[j])
+
+         for j in range(len(speedbreakers)):
             if is_between(np.array(points[i]), np.array(points[i+1]), np.array(speedbreakers[j])):
-                on_route.append(speedbreakers[j])
+               s_on_route.append(speedbreakers[j])
 
-      return on_route
+      return p_on_route, s_on_route
     
-    intersect = data_on_route(points, potholes, speedbreakers)
-    result = list(set(tuple(x) for x in intersect))
+    potholes, speedbreakers = data_on_route(points, potholes, speedbreakers)
+    p_result = list(set(tuple(x) for x in potholes))
+    s_result = list(set(tuple(x) for x in speedbreakers))
 
-    return {"Potholes" : result}
+    return {"Number of potholes" : p_result, "Number of speedbreakers:" : s_result}
   else:
     return "Error. Please check your input."
