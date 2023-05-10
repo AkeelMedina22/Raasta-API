@@ -3,7 +3,5 @@ flask_restful
 firebase
 flask_cors
 flasgger
-jsonify
-requests
 numpy
-jsonpickle
+scipy
