@@ -150,6 +150,23 @@ def nearest_neighbor(input):
                 points.append([p.pop(), float(txt[x])])
            else:
               break
+              
+  potholes = []
+  speedbreakers = []
+  result = firebase.get('/pothole-locations', None)
+  for key1, value in result.items():
+      latlong = []
+      for key2, value2 in value.items():
+          latlong.append(value2)
+      pothole.append(latlong)
+
+  result = firebase.get('/speedbreaker-locations', None)
+  for key1, value in result.items():
+      latlong = []
+      for key2, value2 in value.items():
+          latlong.append(value2)
+      speedbreaker.append(latlong)
+
            
   if len(points) % 2 == 0 and len(points) >= 2:
     print(points)
